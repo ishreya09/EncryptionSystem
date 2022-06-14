@@ -10,6 +10,16 @@ unsigned char matrix[256][256];
 unsigned char key[10000];
 unsigned char text[10000];
 int shift;
+
+void key_init(unsigned char *k){
+    strcpy(key,k);
+}
+
+void text_init(unsigned char *t){
+    strcpy(text,t);
+}
+
+
 void string_input(){
 
     printf("Enter the text to be encrypted :- ");
