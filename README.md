@@ -4,7 +4,7 @@ We have applied Vegineré Cipher and Ceaser Cipher together to create an encrypt
 
 #Contributors
 
-Shreya Mishra <br>
+Shreya Mishra - https://github.com/ishreya09 <br>
 Sinchana S <br>
 Shravani <br>
 
