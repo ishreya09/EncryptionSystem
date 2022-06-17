@@ -19,6 +19,10 @@ void text_init(unsigned char *t){
     strcpy(text,t);
 }
 
+void shift_init(int s){
+    shift=s;
+}
+
 
 void string_input(){
 

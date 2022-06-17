@@ -1,5 +1,6 @@
 void key_init(unsigned char *k);
 void text_init(unsigned char *t);
+void shift_init(int s);
 void string_input();
 void cipher(int shift);
 void de_cipher(int shift);
