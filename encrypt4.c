@@ -23,6 +23,9 @@ void shift_init(int s){
     shift=s;
 }
 
+unsigned char get_text(){
+    return text;
+}
 
 void string_input(){
 
