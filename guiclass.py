@@ -121,7 +121,7 @@ class tkObject:
         self.object.geometry(self.geometry)
         self.object.title(self.title)
         self.object.minsize(self.minsize[0],self.minsize[1])
-        self.object.iconbitmap("icons8-data-protection-100.png")
+        # self.object.iconbitmap("icons8-data-protection-100.png")
         #self.object.config(bg=self.bg)
 
     def setBg(self,colorObject:Colors):
