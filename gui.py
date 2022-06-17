@@ -86,7 +86,6 @@ def main():
             menubar,
             filemenu,
             mode,
-            New_btn,
             mybtn3,
             home_btn,
             textarea_btn,
