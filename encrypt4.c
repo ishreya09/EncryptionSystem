@@ -23,9 +23,6 @@ void shift_init(int s){
     shift=s;
 }
 
-unsigned char get_text(){
-    return text;
-}
 
 void string_input(){
 
@@ -134,40 +131,35 @@ void decrypt(){
     text[strlen(text)] = '\0';
 }
 
-void input_file(){
+
+// int main()
+// {
+//     int shift;
+//     makeMatrix();
     
-}
+//     printf("Enter the text to be encrypted :- ");
+//     scanf("\n%[^\n]%*c",text);
+//     printf("Enter the key :- ");
+//     scanf("\n%[^\n]%*c",key);
+//     printf("Enter the shift value for caeser cipher :- ");
+//     scanf("%d",&shift);
+//     makeKeyword(key);
 
+//     printf("\nThe multiplied keyword : \n%s\n",key);
 
+//     printf("\nThe text to be encrypted:\n%s\n",text);
 
-int main()
-{
-    int shift;
-    makeMatrix();
-    
-    printf("Enter the text to be encrypted :- ");
-    scanf("\n%[^\n]%*c",text);
-    printf("Enter the key :- ");
-    scanf("\n%[^\n]%*c",key);
-    printf("Enter the shift value for caeser cipher :- ");
-    scanf("%d",&shift);
-    makeKeyword(key);
+//     encrypt();
+//     printf("\nThe encrypted text: \n%s\n",text);
 
-    printf("\nThe multiplied keyword : \n%s\n",key);
+//     cipher(shift);
+//     printf("\nThe encrypted ceaser ciphered text: \n%s\n",text);
 
-    printf("\nThe text to be encrypted:\n%s\n",text);
+//     de_cipher(shift);
+//     printf("\nDe ceaser ciphered which returns the encrypted back: \n%s\n",text);
+//     decrypt();
+//     printf("\nThe text returned after decryption is: \n%s\n\n",text);
 
-    encrypt();
-    printf("\nThe encrypted text: \n%s\n",text);
-
-    cipher(shift);
-    printf("\nThe encrypted ceaser ciphered text: \n%s\n",text);
-
-    de_cipher(shift);
-    printf("\nDe ceaser ciphered which returns the encrypted back: \n%s\n",text);
-    decrypt();
-    printf("\nThe text returned after decryption is: \n%s\n\n",text);
-
-    return 0;
-}
+//     return 0;
+// }
 
