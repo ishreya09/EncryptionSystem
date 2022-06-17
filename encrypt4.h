@@ -1,3 +1,4 @@
+unsigned char text[10000];
 void key_init(unsigned char *k);
 void text_init(unsigned char *t);
 void shift_init(int s);

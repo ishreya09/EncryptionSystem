@@ -29,14 +29,14 @@ int input_file(char address[2000]){
 void write_file(char address[2000]){
     FILE *fp;
     fp = fopen(address,"w");
-    unsigned char t[10000],ch;
-    strcpy(t,get_text());
+    unsigned char ch;
     int i=0;
-    while (t[i]!=0){
-        fputc(t[i],fp);
+    // global text
+    while (text[i]!=0){
+        fputc(text[i],fp);
         i++;
     }
-    t[i]='\0';
+    text[i]='\0';
     fclose(fp);
 
 }
