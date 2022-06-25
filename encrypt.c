@@ -102,8 +102,6 @@ void makeKeyword(){
     // p = (char*)calloc(strlen(text),sizeof(char));
     
 
-    printf("%d\n",strlen(text));  
-
     int i=0,j=0;
     
     for(i=0,j=0;i<strlen(text);i++,j++){
@@ -196,29 +194,32 @@ void write_file(){
 
 }
 
+// to create a shared library
+// cc -fPIC -shared -o encrypt.so encrypt.c
 
-int main(){
 
-    file_input();
-    input_file();
+// int main(){
 
-    makeMatrix();
-    makeKeyword(key);
+//     file_input();
+//     input_file();
 
-    printf("%s\n",text);
+//     makeMatrix();
+//     makeKeyword(key);
 
-    // encrypt();
-    encrypt();
-    printf("%s\n",text);
+//     printf("%s\n",text);
 
-    write_file();
-    decrypt();
+//     // encrypt();
+//     encrypt();
+//     printf("%s\n",text);
+
+//     write_file();
+//     decrypt();
     
-    printf("%s\n",text);
+//     printf("%s\n",text);
 
-    write_file();
+//     write_file();
 
 
-    return 0;
-}
+//     return 0;
+// }
 
