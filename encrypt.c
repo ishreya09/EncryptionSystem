@@ -190,6 +190,29 @@ void input_file(){
     }
 }
 
+void write_another_file(char *add){
+    FILE *fp;
+    fp = fopen(add,"w");
+    if (fp==NULL){
+        printf("Could not open files");
+        exit(0);
+    }
+
+    else
+    {
+        char ch;
+        int i=0;
+        // global text
+        while (text[i]!=0){
+            printf("%c",text[i]);
+            fputc(text[i],fp);
+            i++;
+        }
+        fclose(fp);
+    }
+
+}
+
 void write_file(){
     FILE *fp;
     fp = fopen(address,"w");

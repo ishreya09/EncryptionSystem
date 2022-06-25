@@ -4,8 +4,41 @@ e = ctypes.CDLL("/home/ubuntu/Desktop/encrypt/EncryptionSystem/encrypt.so")
 
 global key, text, address, shift
 
-def encrypt():# strings
+def encrypt_string():# strings
     e.text_init(text)
+    e.key_init(key)
+    e.shift_init(shift)
+    e.makeMatrix()
+    e.makeKeyword()
+    e.encrypt()
+    p= e.getText()
+    return p
 
-# decrypt - strings 
-# 
+
+def decrypt_string():
+    e.text_init(text)
+    e.key_init(key)
+    e.shift_init(shift)
+    e.address_init(address)
+    e.makeMatrix()
+    e.makeKeyword()
+
+    e.decrypt()
+    c=e.getText()
+    return c
+
+def encrypt_file(filename):
+    e.address_init(address)
+    e.file_input()
+    e.write_file()
+    p= e.getText()
+
+    return p
+
+def decrypt_file(filename):
+    e.address_init(address)
+    e.file_input()
+    e.write_file()
+    p= e.getText()
+
+    return p
