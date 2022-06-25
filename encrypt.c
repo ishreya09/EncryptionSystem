@@ -13,6 +13,25 @@ char text[10000];
 char address[2000];
 int shift;
 
+//getters for python
+char* getText(){
+    return text;
+}
+
+char* getKey(){
+    return key;
+}
+
+char* getAddress(){
+    return address;
+}
+
+int getShift(){
+    return shift;
+}
+
+
+// setters
 void key_init(char *k){
     strcpy(key,k);
 }
