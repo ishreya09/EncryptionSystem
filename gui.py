@@ -100,6 +100,10 @@ def main():
 
     def activateText():
         frame2.pack(side=TOP)
+    
+    def open_file():
+        file_path = fd.askopenfilename()
+        print(file_path)
 
         
     frame=Frame(bg=color.labelbg)
@@ -211,7 +215,7 @@ def main():
     p11= myimg11.subsample(3,3)
     Open_btn=Button(
         frame,
-        command=lambda:None,
+        command=lambda:open_file(),
         bg=color.buttons,
         fg=color.labelfg,
         font= (font,12,"bold"),
@@ -221,6 +225,8 @@ def main():
         )
     Open_btn.pack(side=RIGHT)
     CreateToolTip(Open_btn,"Open File")
+
+
     myimg8= PhotoImage(file="icons8-home-100.png")
     p8= myimg8.subsample(3,3)
     home_btn=Button(
