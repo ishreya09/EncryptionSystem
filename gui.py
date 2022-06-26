@@ -187,7 +187,7 @@ def main():
         pc.text=text1.get(1.0, "end-1c")
         pc.key=key_entry1.get()
         pc.shift=int(shift_entry1.get())
-        pc.address=file_path.get()
+        pc.address=file_path
         pc.address_new = add_new_entry1.get()
         p=pc.decrypt_file()
         mb.showinfo("The file is decrypted","The file is decrypted")
@@ -197,7 +197,7 @@ def main():
         pc.text=text1.get(1.0, "end-1c")
         pc.key=key_entry1.get()
         pc.shift=int(shift_entry1.get())
-        pc.address=file_path.get()
+        pc.address=file_path
         pc.address_new = add_new_entry1.get()
         pc.encrypt_file()
         mb.showinfo("The file is encrypted","The file is Encrypted")
