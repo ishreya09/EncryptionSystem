@@ -167,7 +167,7 @@ def main():
         pc.address_new= add_new_entry.get()
         pc.encrypt_string()
         
-        mb.OK("The File is Encrypted","The File is Encrypted in {}".format(pc.address_new))
+        mb.showinfo("The string is Encrypted","The string is Encrypted")
         frame2.pack_forget()
 
 
@@ -179,7 +179,7 @@ def main():
         pc.address_new= add_new_entry.get()
         pc.decrypt_string()
         
-        mb.OK("The string is decrypted", "The string is decrypted in {}".format(pc.address_new))
+        mb.showinfo("The string is decrypted","The string is decrypted")
         frame2.pack_forget()
 
 
@@ -190,7 +190,7 @@ def main():
         pc.address=file_path.get()
         pc.address_new = add_new_entry1.get()
         p=pc.decrypt_file()
-        mb.OK("The file is decrypted","The file is decrypted in {}".format(pc.address_new))
+        mb.showinfo("The file is decrypted","The file is decrypted")
         frame3.pack_forget()
 
     def encrypt_file():
@@ -200,7 +200,7 @@ def main():
         pc.address=file_path.get()
         pc.address_new = add_new_entry1.get()
         pc.encrypt_file()
-        mb.OK("The file is encrypted","The file is encrypted in {}".format(pc.address_new))
+        mb.showinfo("The file is encrypted","The file is Encrypted")
         frame3.pack_forget()
 
 
