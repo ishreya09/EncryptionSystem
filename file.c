@@ -52,9 +52,9 @@ void address_init(char *add){
 void file_input(){
 
     printf("Enter the file to be encrypted :- ");
-    scanf("\n%[^\n]%*c",address);
+    fscanf(stdin,"\n%[^\n]%*c",address);
     printf("Enter the key :- ");
-    scanf("\n%[^\n]%*c",key);
+    fscanf(stdin,"\n%[^\n]%*c",key);
     printf("Enter the shift value for caeser cipher :- ");
     scanf("%d",&shift);
 
@@ -63,16 +63,16 @@ void file_input(){
 void string_input(){
 
     printf("Enter the text to be encrypted :- ");
-    scanf("\n%[^\n]%*c",text);
+    fscanf(stdin,"\n%[^\n]%*c",text);
     printf("Enter the key :- ");
-    scanf("\n%[^\n]%*c",key);
+    fscanf(stdin,"\n%[^\n]%*c",key);
     printf("Enter the shift value for caeser cipher :- ");
     scanf("%d",&shift);
 
 }
 
 
-void cipher(int shift){
+void cipher(){
     for (int i =0; text[i]!=0;i++)
     {
         text[i]+=shift;
@@ -81,7 +81,7 @@ void cipher(int shift){
 
 }
 
-void de_cipher(int shift){
+void de_cipher(){
     for (int i =0; text[i]!=0;i++)
     {
         text[i]-=shift;
@@ -250,15 +250,23 @@ void write_file(){
 
 int main(){
     int choice; 
+    makeMatrix();
 
     do{
-        printf("Hello\n");
-        printf("WELCOME TO THE ENCRYPTION AND DECRYPTION SYSTEM");
-        printf("What do you wish to encrypt....?\n");
-        printf("A string or a file....\n");
-        printf("Choice 1: Wishing to encrypt strings \n");
-        printf("Choice 2:Wishing to encrypt the file\n");
-        printf("Enter your choice\n");
+        // printf("Hello\n");
+        // printf("WELCOME TO THE ENCRYPTION AND DECRYPTION SYSTEM");
+        // printf("What do you wish to encrypt....?\n");
+        // printf("A string or a file....\n");
+        // printf("Choice 1: Wishing to encrypt strings \n");
+        // printf("Choice 2:Wishing to encrypt the file\n");
+        // printf("Enter your choice\n");
+
+        printf("\n\n\n********\t\t\t\t\t*******\n\t\t\t\t\tHELLO\n********\t\t\t\t\t*******\n\n\n");
+        printf("##########\tWELCOME TO THE ENCRYPTION AND DECRYPTION SYSTEM\t\t###########*#\n\n\n");
+        printf("------------------\t\t\t\t-------------------\n\t\t--------------What do you wish to encrypt....----------------\n-----------------\t\t\t---------------------\n\n\n");
+        printf("__*******\n\t\t\t\tA string or a file....\n\t\t\t\t\t\t\t*************\n\n\n");
+        printf("\n***********\n\t\t\t\tChoice 1: Wishing to encrypt strings\n\t\t\t\tChoice 2:Wishing to encrypt the file\n\t\t\t\t\t\t\t\t\t************* \n\n\n");
+        printf("\t\t*\t*\t*\tEnter your choice\t*\t*\t*\t*\t*\n");
         scanf("%d",&choice);
 
 
@@ -266,6 +274,7 @@ int main(){
         switch(choice){
             case 1:
             string_input();
+            makeKeyword();
             printf("Do you wish to encrypt or decrypt...??\n");
             printf("Choice 1: Encrypt the string\n");
             printf("Choice 2: Decrypt the string\n");
@@ -274,10 +283,12 @@ int main(){
             switch(option){
                 case 1:
                 encrypt();
+                cipher();
                 printf("%d\n",text==0);
                 printf("%s\n",text);
                 break;
                 case 2 :
+                de_cipher();
                 decrypt();
                 printf("%s\n",text);
                 break;
@@ -287,6 +298,7 @@ int main(){
             break;
             case 2:
             file_input();
+            makeKeyword();
             printf("Do you wish to encrypt or decrypt...??\n");
             printf("Choice 1: Encrypt the file\n");
             printf("Choice 2: Decrypt the file\n");
@@ -296,11 +308,13 @@ int main(){
                 case 1:
                 input_file();
                 encrypt();
+                cipher();
                 write_file();
                 printf("%s\n",text);
                 break;
                 case 2 :
                 input_file(); 
+                de_cipher();
                 decrypt();
                 write_file();
                 printf("%s\n",text);

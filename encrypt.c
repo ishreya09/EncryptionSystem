@@ -77,7 +77,7 @@ void string_input(){
 }
 
 
-void cipher(int shift){
+void cipher(){
     for (int i =0; text[i]!=0;i++)
     {
         text[i]+=shift;
@@ -86,7 +86,7 @@ void cipher(int shift){
 
 }
 
-void de_cipher(int shift){
+void de_cipher(){
     for (int i =0; text[i]!=0;i++)
     {
         text[i]-=shift;
@@ -121,6 +121,7 @@ void printMatrix(){
 
 // make a keyword equal to the length of the text accepted
 void makeKeyword(){
+    printf("%d\n",strlen(text));
     char p[strlen(text)];
     // char *p;
     // p = (char*)calloc(strlen(text),sizeof(char));
@@ -132,11 +133,14 @@ void makeKeyword(){
         if(j==strlen(key))
             j=0;
         p[i]=key[j];
+        printf("p[%d]=%c\n",i,p[i]);
+
     }
         
     p[strlen(text)]='\0';
 
-    printf("%s\n",key);  
+    // printf("%s\n",key);
+    printf("%s\n",p);  
 
     strcpy(key,p);//makes the key of same length as text length
 }
@@ -153,6 +157,9 @@ char encryptLetter(char t,char k){
 }
 
 void encrypt(){
+    printf("%d",shift);
+    printf("key ==%s\n",key);
+    printf("%s\n",text);
     char p;
     
     for(int i=0;i<strlen(text);i++){
@@ -160,18 +167,27 @@ void encrypt(){
         text[i]=p;
     }
     text[strlen(key)]='\0';
+    printf("%s",text);
 }
 
 
 
-// for decrypting the text
+// // for decrypting the text
+// void decrypt(){
+//     for(int i = 0; i < strlen(text); ++i)
+//         text[i] = (((text[i] - key[i]) + 256) % 256) ;
+ 
+//     text[strlen(text)] = '\0';
+// }
+
 void decrypt(){
     for(int i = 0; i < strlen(text); ++i)
         text[i] = (((text[i] - key[i]) + 256) % 256) ;
  
     text[strlen(text)] = '\0';
+    printf("The cfile returned after encryption and decryption is: %s\n",text);
+    
 }
-
 
 void input_file(){
     FILE *fp;
@@ -198,6 +214,7 @@ void input_file(){
 void write_another_file(){
     FILE *fp;
     fp = fopen(new_add,"w");
+    printf("%s\n",text);
     if (fp==NULL){
         printf("Could not open files");
         exit(0);
@@ -242,40 +259,54 @@ void write_file(){
 }
 
 void encrypt_python_string(char *t,char *k, char *new,int s){
-    key_init(k);
+    makeMatrix();
     text_init(t);
+    key_init(k);
+    makeKeyword();
     shift_init(s);
     new_address_init(new);
     encrypt();
+    cipher();
     write_another_file();
 }
 
 void decrypt_python_string(char *t,char *k, char *new,int s){
-    key_init(k);
+    makeMatrix();
     text_init(t);
+    key_init(k);
+    makeKeyword();
     shift_init(s);
     new_address_init(new);
+    de_cipher();
     decrypt();
     write_another_file();
 }
 
 void decrypt_python_file(char *t,char *k, char *add,char *new,int s){
+    makeMatrix();
+    input_file();
     key_init(k);
-    text_init(t);
+    makeKeyword();
+    // text_init(t);
     shift_init(s);
     address_init(add);
     new_address_init(new);
     decrypt();
+    cipher();
     write_another_file();
 }
 
 void encrypt_python_file(char *t,char *k, char *add,char *new,int s){
+    makeMatrix();
+    input_file();
     key_init(k);
-    text_init(t);
+    makeKeyword();
+    // text_init(t);
     shift_init(s);
     address_init(add);
     new_address_init(new);
     encrypt();
+    de_cipher();
     write_another_file();
 }
 
