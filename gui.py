@@ -150,6 +150,9 @@ def main():
         
         global file_path
         file_path = fd.askopenfilename()
+        d= file_path.split('/')[-1]
+        print(d)
+        file_path=d
         # print(file_path)
         f = open(file_path, "r")
         pc.address = file_path

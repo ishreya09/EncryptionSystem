@@ -191,6 +191,7 @@ void decrypt(){
 
 void input_file(){
     FILE *fp;
+    printf("%s\n",address);
     fp= fopen(address,"r");
     if (fp==NULL){
         printf("Could not open files");

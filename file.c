@@ -253,14 +253,7 @@ int main(){
     makeMatrix();
 
     do{
-        // printf("Hello\n");
-        // printf("WELCOME TO THE ENCRYPTION AND DECRYPTION SYSTEM");
-        // printf("What do you wish to encrypt....?\n");
-        // printf("A string or a file....\n");
-        // printf("Choice 1: Wishing to encrypt strings \n");
-        // printf("Choice 2:Wishing to encrypt the file\n");
-        // printf("Enter your choice\n");
-
+        
         printf("\n\n\n********\t\t\t\t\t*******\n\t\t\t\t\tHELLO\n********\t\t\t\t\t*******\n\n\n");
         printf("##########\tWELCOME TO THE ENCRYPTION AND DECRYPTION SYSTEM\t\t###########*#\n\n\n");
         printf("------------------\t\t\t\t-------------------\n\t\t--------------What do you wish to encrypt....----------------\n-----------------\t\t\t---------------------\n\n\n");
@@ -275,9 +268,9 @@ int main(){
             case 1:
             string_input();
             makeKeyword();
-            printf("Do you wish to encrypt or decrypt...??\n");
-            printf("Choice 1: Encrypt the string\n");
-            printf("Choice 2: Decrypt the string\n");
+            printf("------------------\t\t\t\t-------------------\n\t\t--------------Do you wish to encrypt or decrypt...??----------------\n-----------------\t\t\t---------------------\n\n\n");
+            printf("\n***********\n\t\t\t\tChoice 1: Encrypt the string\n\t\t\t\tChoice 2: Decrypt the string\n\t\t\t\t\t\t\t\t\t************* \n\n\n");
+            //printf("Choice 2: Decrypt the string\n");
             int option;
             scanf("%d",&option);
             switch(option){
@@ -299,9 +292,9 @@ int main(){
             case 2:
             file_input();
             makeKeyword();
-            printf("Do you wish to encrypt or decrypt...??\n");
-            printf("Choice 1: Encrypt the file\n");
-            printf("Choice 2: Decrypt the file\n");
+            printf("\n\n\n********\t\t\t\t\t*******\n\t\t\t\t\tDo you wish to encrypt or decrypt...??\n********\t\t\t\t\t*******\n\n\n");
+            printf("\n***********\n\t\t\t\tChoice 1: Encrypt the file\n\t\t\t\tChoice 2: Decrypt the file\n\t\t\t\t\t\t\t\t\t************* \n\n\n");
+            //printf("Choice 2: Decrypt the file\n");
             int opt;
             scanf("%d",&opt);
             switch(opt){
@@ -324,7 +317,7 @@ int main(){
             }
             break;
             default:
-                printf("Invalid Choice");
+                printf("\n\n\n********\t\t\t\t\t*******\n\t\t\t\t\tInvalid Choice\n********\t\t\t\t\t*******\n\n\n");
 
 
         }
