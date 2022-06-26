@@ -2,7 +2,7 @@ import ctypes
 
 e = ctypes.CDLL("/home/ubuntu/Desktop/encrypt/EncryptionSystem/encrypt.so")
 
-global key, text, address, shift
+global key, text, address, shift,address_new
 
 def encrypt_string():# strings
     e.text_init(text)
@@ -30,7 +30,7 @@ def decrypt_string():
 def encrypt_file(filename):
     e.address_init(address)
     e.file_input()
-    e.write_file()
+    e.write_another_file(address_new)
     p= e.getText()
 
     return p
@@ -38,7 +38,7 @@ def encrypt_file(filename):
 def decrypt_file(filename):
     e.address_init(address)
     e.file_input()
-    e.write_file()
+    e.write_another_file(address_new)
     p= e.getText()
 
     return p

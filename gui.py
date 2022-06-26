@@ -51,7 +51,9 @@ def main():
     r=tkObject("Encryption","1300x600",(500,500))
     root=r.getObject()
     
-    
+    scroll=Scrollbar(root)
+    scroll.pack(side=RIGHT,fill=Y)
+    # root.config(yscrollbar=s.set)
 
     r.setBg(color)
     
@@ -148,7 +150,7 @@ def main():
         frame3.pack(side=TOP)
 
     def encrypt_string():
-        pc.text = text.get()
+        pc.text = text.get(1.0, "end-1c")
         pc.key= key_entry.get()
         pc.shift= int(shift_entry.get())
         pc.address = None
@@ -157,7 +159,11 @@ def main():
         r1= Tk()
         Label(
             r1,
-            text=p
+            text=p,
+            fg=color.labelfg,
+            bg=color.labelbg,
+            cursor="arrow",
+            font=(font,12,"normal"),
         ).pack()
 
         r1.mainloop()
@@ -165,7 +171,7 @@ def main():
         # mb.OK("The File is Encrypted","The File is Encrypted")
 
     def decrypt_string():
-        pc.text=text.get()
+        pc.text=text.get(1.0, "end-1c")
         pc.key=key_entry.get()
         pc.shift=int(shift_entry.get())
         pc.address=None
@@ -173,25 +179,31 @@ def main():
         r1= Tk()
         Label(
             r1,
-            text=p
+            text=p,
+            fg=color.labelfg,
+            bg=color.labelbg,
+            cursor="arrow",
+            font=(font,12,"normal"),
         ).pack()
 
         r1.mainloop()
         # mb.OK("The string is decrypted")
 
     def decrypt_file():
-        pc.text=text1.get()
+        pc.text=text1.get(1.0, "end-1c")
         pc.key=key_entry1.get()
         pc.shift=int(shift_entry1.get)()
         pc.address=file_path.get()
+        pc.address_new = add_new_entry1.get()
         p=pc.decrypt_file()
         mb.OK("The file is decrypted")
 
     def encrypt_file():
-        pc.text=text1.get()
+        pc.text=text1.get(1.0, "end-1c")
         pc.key=key_entry1.get()
         pc.shift=int(shift_entry1.get)()
         pc.address=file_path.get()
+        pc.address_new = add_new_entry1.get()
         p=pc.encrypt_file()
         mb.OK("The file is encrypted")
 
@@ -320,6 +332,30 @@ def main():
     )
     shift_entry1.pack(side =TOP,expand=True)
 
+
+    add_new_label1 = Label (
+        frame3,
+        text = "SHIFT :",
+        fg=color.labelfg,
+        bg=color.labelbg,
+        cursor="arrow",
+        font=(font,12,"normal"),
+    )
+    add_new_label1.pack(side = TOP)    
+
+    add_new_entry1 = Entry (
+        frame3,
+        width = 100,
+        fg=color.labelfg,
+        bg=color.entry,
+        cursor="arrow",
+        insertbackground=color.labelfg,
+        font=(font,12,"normal"),
+        
+    )
+    add_new_entry1.pack(side =TOP,expand=True)
+
+
     text_label1 = Label (
         frame3,
         text = "TEXT :",
@@ -406,7 +442,7 @@ def main():
     p14= myimg14.subsample(2,2)
     decrypt_btn=Button(
         frame,
-        command=lambda:None,
+        command=lambda:encrypt_file(),
         bg=color.buttons,
         fg=color.labelfg,
         font= (font,12,"bold"),
@@ -421,7 +457,7 @@ def main():
     p15= myimg15.subsample(2,2)
     encrypt_btn=Button(
         frame,
-        command=lambda:None,
+        command=lambda:decrypt_file(),
         bg=color.buttons,
         fg=color.labelfg,
         font= (font,12,"bold"),
@@ -437,7 +473,7 @@ def main():
     p18= myimg18.subsample(2,2)
     decrypt_btn_str=Button(
         frame,
-        command=lambda:None,
+        command=lambda:decrypt_string(),
         bg=color.buttons,
         fg=color.labelfg,
         font= (font,12,"bold"),
@@ -452,7 +488,7 @@ def main():
     p16= myimg16.subsample(2,2)
     encrypt_btn_str=Button(
         frame,
-        command=lambda:None,
+        command=lambda:encrypt_string(),
         bg=color.buttons,
         fg=color.labelfg,
         font= (font,12,"bold"),
@@ -469,7 +505,7 @@ def main():
     p17= myimg17.subsample(2,2)
     textarea_btn=Button(
         frame,
-        command=lambda:activateText(),
+        command=lambda:[activateText()],
         bg=color.buttons,
         fg=color.labelfg,
         font= (font,12,"bold"),
@@ -519,13 +555,13 @@ def main():
     menubar=Menu(root)
     filemenu = Menu(menubar, tearoff=0,bg=color.labelbg,fg= color.labelfg,relief=RAISED,font=(font,12,"normal"))
     menubar.add_cascade(label="File", menu=filemenu)
-    filemenu.add_command(label="Open Text Area",command=None)
-    filemenu.add_command(label="Encrypt Text",command=None)
-    filemenu.add_command(label="Decrypt Text",command=None)
+    filemenu.add_command(label="Open Text Area",command=activateText)
+    filemenu.add_command(label="Encrypt Text",command=encrypt_string)
+    filemenu.add_command(label="Decrypt Text",command=decrypt_string)
     filemenu.add_separator()
-    filemenu.add_command(label="Open File",command=None)
-    filemenu.add_command(label="Encrypt File",command=None)
-    filemenu.add_command(label="Decrypt File",command=None)
+    filemenu.add_command(label="Open File",command=open_file)
+    filemenu.add_command(label="Encrypt File",command=encrypt_file)
+    filemenu.add_command(label="Decrypt File",command=decrypt_file)
     filemenu.add_separator()
 
 
