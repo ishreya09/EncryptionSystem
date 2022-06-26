@@ -11,6 +11,7 @@ char matrix[256][256];
 char key[10000];
 char text[10000];
 char address[2000];
+char new_add[2000]; //new addess 
 int shift;
 
 //getters for python
@@ -43,6 +44,10 @@ void text_init(char *t){
 
 void shift_init(int s){
     shift=s;
+}
+
+void new_address_init(char *add){
+    strcpy(new_add,add);
 }
 
 void address_init(char *add){
@@ -190,9 +195,9 @@ void input_file(){
     }
 }
 
-void write_another_file(char *add){
+void write_another_file(){
     FILE *fp;
-    fp = fopen(add,"w");
+    fp = fopen(new_add,"w");
     if (fp==NULL){
         printf("Could not open files");
         exit(0);
@@ -234,6 +239,44 @@ void write_file(){
         fclose(fp);
     }
 
+}
+
+void encrypt_python_string(char *t,char *k, char *new,int s){
+    key_init(k);
+    text_init(t);
+    shift_init(s);
+    new_address_init(new);
+    encrypt();
+    write_another_file();
+}
+
+void decrypt_python_string(char *t,char *k, char *new,int s){
+    key_init(k);
+    text_init(t);
+    shift_init(s);
+    new_address_init(new);
+    decrypt();
+    write_another_file();
+}
+
+void decrypt_python_file(char *t,char *k, char *add,char *new,int s){
+    key_init(k);
+    text_init(t);
+    shift_init(s);
+    address_init(add);
+    new_address_init(new);
+    decrypt();
+    write_another_file();
+}
+
+void encrypt_python_file(char *t,char *k, char *add,char *new,int s){
+    key_init(k);
+    text_init(t);
+    shift_init(s);
+    address_init(add);
+    new_address_init(new);
+    encrypt();
+    write_another_file();
 }
 
 // to create a shared library

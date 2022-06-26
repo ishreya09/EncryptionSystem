@@ -92,6 +92,10 @@ def main():
             text1,
             encrypt_btn_str,
             decrypt_btn_str,
+            add_new_label,
+            add_new_entry,
+            add_new_label1,
+            add_new_entry1,
 
             )
         mybtn.config(command=light)
@@ -131,6 +135,10 @@ def main():
             text1,
             encrypt_btn_str,
             decrypt_btn_str,
+            add_new_label,
+            add_new_entry,
+            add_new_label1,
+            add_new_entry1,
 
             )
         mybtn.config(command=dark)
@@ -139,12 +147,14 @@ def main():
         frame2.pack(side=TOP)
     
     def open_file():
+        
         global file_path
         file_path = fd.askopenfilename()
         # print(file_path)
         f = open(file_path, "r")
         pc.address = file_path
         message= f.read()
+        text1.delete('1.0', END)
         text1.insert(END,message)
         f.close()
         frame3.pack(side=TOP)
@@ -154,64 +164,50 @@ def main():
         pc.key= key_entry.get()
         pc.shift= int(shift_entry.get())
         pc.address = None
-        p =pc.encrypt_string()
-
-        r1= Tk()
-        Label(
-            r1,
-            text=p,
-            fg=color.labelfg,
-            bg=color.labelbg,
-            cursor="arrow",
-            font=(font,12,"normal"),
-        ).pack()
-
-        r1.mainloop()
+        pc.address_new= add_new_entry.get()
+        pc.encrypt_string()
         
-        # mb.OK("The File is Encrypted","The File is Encrypted")
+        mb.OK("The File is Encrypted","The File is Encrypted in {}".format(pc.address_new))
+        frame2.pack_forget()
+
 
     def decrypt_string():
         pc.text=text.get(1.0, "end-1c")
         pc.key=key_entry.get()
         pc.shift=int(shift_entry.get())
         pc.address=None
-        p= pc.decrypt_string()
-        r1= Tk()
-        Label(
-            r1,
-            text=p,
-            fg=color.labelfg,
-            bg=color.labelbg,
-            cursor="arrow",
-            font=(font,12,"normal"),
-        ).pack()
+        pc.address_new= add_new_entry.get()
+        pc.decrypt_string()
+        
+        mb.OK("The string is decrypted", "The string is decrypted in {}".format(pc.address_new))
+        frame2.pack_forget()
 
-        r1.mainloop()
-        # mb.OK("The string is decrypted")
 
     def decrypt_file():
         pc.text=text1.get(1.0, "end-1c")
         pc.key=key_entry1.get()
-        pc.shift=int(shift_entry1.get)()
+        pc.shift=int(shift_entry1.get())
         pc.address=file_path.get()
         pc.address_new = add_new_entry1.get()
         p=pc.decrypt_file()
-        mb.OK("The file is decrypted")
+        mb.OK("The file is decrypted","The file is decrypted in {}".format(pc.address_new))
+        frame3.pack_forget()
 
     def encrypt_file():
         pc.text=text1.get(1.0, "end-1c")
         pc.key=key_entry1.get()
-        pc.shift=int(shift_entry1.get)()
+        pc.shift=int(shift_entry1.get())
         pc.address=file_path.get()
         pc.address_new = add_new_entry1.get()
-        p=pc.encrypt_file()
-        mb.OK("The file is encrypted")
+        pc.encrypt_file()
+        mb.OK("The file is encrypted","The file is encrypted in {}".format(pc.address_new))
+        frame3.pack_forget()
 
 
         
     frame=Frame(bg=color.labelbg)
-    frame2=Frame(root,bg=color.labelbg,width=1400,height=600)
-    frame3=Frame(root,bg=color.labelbg,width=1400,height=600)
+    frame2=Frame(root,bg=color.labelbg,width=1400,height=600) # for text
+    frame3=Frame(root,bg=color.labelbg,width=1400,height=600) # for file
 
     frame.pack(side=TOP)
 
@@ -258,6 +254,30 @@ def main():
         
     )
     shift_entry.pack(side =TOP,expand=True)
+
+    add_new_label = Label (
+        frame2,
+        text = "Name of the file to store in :",
+        fg=color.labelfg,
+        bg=color.labelbg,
+        cursor="arrow",
+        font=(font,12,"normal"),
+    )
+    add_new_label.pack(side = TOP)    
+
+    add_new_entry = Entry (
+        frame2,
+        width = 100,
+        fg=color.labelfg,
+        bg=color.entry,
+        cursor="arrow",
+        insertbackground=color.labelfg,
+        font=(font,12,"normal"),
+        
+    )
+    add_new_entry.pack(side =TOP,expand=True)
+
+
 
     text_label = Label (
         frame2,
@@ -335,7 +355,7 @@ def main():
 
     add_new_label1 = Label (
         frame3,
-        text = "SHIFT :",
+        text = "Name of the file to store in :",
         fg=color.labelfg,
         bg=color.labelbg,
         cursor="arrow",
